@@ -6,7 +6,12 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [side, setSide] = useState<string | null>(null);
   const [flipping, setFlipping] = useState(false);
-  const [counts, setCounts] = useState({ heads: 0, tails: 0 });
+  // const [counts, setCounts] = useState({ heads: 0, tails: 0 });
+  const [counts, setCounts] = useState<Record<"heads" | "tails", number>>({
+    heads: 0,
+    tails: 0,
+  });
+
   const [darkMode, setDarkMode] = useState(false);
 
   const flipCoin = () => {
@@ -17,10 +22,17 @@ export default function Home() {
     setTimeout(() => {
       const result = Math.random() < 0.5 ? "Heads" : "Tails";
       setSide(result);
-      setCounts((prev) => ({
-        ...prev,
-        [result.toLowerCase()]: prev[result.toLowerCase()] + 1,
-      }));
+      // setCounts((prev) => ({
+      //   ...prev,
+      //   [result.toLowerCase()]: prev[result.toLowerCase()] + 1,
+      // }));
+      setCounts((prev) => {
+        const key = result.toLowerCase() as "heads" | "tails";
+        return {
+          ...prev,
+          [key]: prev[key] + 1,
+        };
+      });
       setFlipping(false);
     }, 1000);
   };
