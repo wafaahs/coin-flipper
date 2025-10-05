@@ -9,7 +9,7 @@ A simple, mobile-friendly web app to flip a coin — built with **Next.js**, **T
 - 🧮 Tracks counts for Heads and Tails
 - 🌗 Toggle between Light and Dark mode
 - 🔄 Reset button to clear counts
-- 💾 Automatically saves your theme and counts (via localStorage)
+
 
 ---
 
